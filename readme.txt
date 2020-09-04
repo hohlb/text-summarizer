@@ -54,7 +54,7 @@ Installation
     
     # test the installation
     #python -c "import torch; import transformers; import fastapi"
-    python -c "import torch; import transformers; import summarizer; import fastapi; import uvicorn; import multipart"
+    python -c "import torch; import transformers; import summarizer; import fastapi; import uvicorn; import multipart; import requests"
 
     # make kernel (environment) available to JupyterLab (restart JupyterLab afterwards)
     #jupyter kernelspec uninstall text-summarizer
@@ -62,3 +62,8 @@ Installation
     
     
     python ./src/create_database.py
+    
+    uvicorn main:app
+    
+    python ./tests/request_summary.py
+    python ./tests/get_summary.py 1
