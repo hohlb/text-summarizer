@@ -1,6 +1,10 @@
 # Python
 .venv
 __pycache__
+
+# IDEs
+idea
 .ipynb_checkpoints
 
-raw_html
+# database
+summaries.db
