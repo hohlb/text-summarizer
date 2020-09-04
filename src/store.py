@@ -6,7 +6,7 @@ def create_summary_id() -> Union[int, None]:
     """Create a new database entry in which the summary will be stored and return the row ID."""
     cursor = get_database_cursor()
     cursor.execute("INSERT INTO summaries(summary) values (NULL)")
-    # the actual summary will be filled in via the background task created in create_summary() in main.py
+    # the actual summary will be filled in via the background task started in create_summary() in main.py
 
     row_id = cursor.lastrowid
 
