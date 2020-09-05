@@ -58,5 +58,5 @@ Installation
     
     uvicorn main:app
     
-    python ./tests/request_summary.py
-    python ./tests/get_summary.py 1
+    python ./scripts/request_summary.py
+    python ./scripts/get_summary.py 1

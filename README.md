@@ -59,7 +59,7 @@ conda install python=3.8
 # first, we will install pytorch:
 # the following pytorch installation command worked for my platform, but it is highly recommended to
 # go to https://pytorch.org/ (you need to scroll a bit on that web page) to generate the correct "pip install" command for your platform
-# (I opted to use the pip packages of pytorch instead of the conda packages (see the following line) because it worked better for my setup)
+# (I opted to use the pip packages instead of the conda packages (see the following lines) because it worked better for me)
 python -m pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 # now, we can install the remaining packages:
 python -m pip install -r requirements.txt
