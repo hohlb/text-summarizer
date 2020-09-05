@@ -75,7 +75,7 @@ If you see no (error) messages, the installation went well.
 ### Rebuild the database (optional)
 You can delete the existing SQLite database `summaries.db` at any time and rebuild it using:
 ```bash
-python ./src/create_database.py
+python ./scripts/create_database.py
 ```
 
 ## Serve the REST API
@@ -90,25 +90,25 @@ Two scripts are provided which show how to use the REST API programmatically:
 
 ### Request a summary for a (long) text
 ```bash
-python ./scripts/request_summary.py
+python ./scripts/test/request_summary.py
 ```
 
 This returns a `document_id` and starts the summarization of the (long) text (defined within the script) in a background task.
 
 ### Get the summary
 ```bash
-python ./scripts/get_summary.py 1
+python ./scripts/test/get_summary.py 1
 ```
 
 Replace `1` in this example with the actual `document_id` you got in the previous step.
 
 ```bash
 # output if the summary is still being created:
-python ./scripts/get_summary.py 1
+python ./scripts/test/get_summary.py 1
 {'document_id': 1, 'summary': None}
 
 # output once the summarization is done:
-python ./scripts/get_summary.py 1
+python ./scripts/test/get_summary.py 1
 {'document_id': 1,
  'summary': 'Tree squirrel\n'
             '\n'
