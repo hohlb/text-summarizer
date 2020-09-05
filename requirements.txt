@@ -1,8 +1,9 @@
 # pytorch needs to be installed as well,
 # go to https://pytorch.org/ (scroll a bit) to generate the correct "pip install" command for your platform
 
-bert-extractive-summarizer
-fastapi
-python-multipart
+bert-extractive-summarizer~=0.5.0
+fastapi~=0.61.1
+python-multipart~=0.0.5
+requests~=2.24.0
 transformers==2.2.2
-uvicorn
+uvicorn~=0.11.8

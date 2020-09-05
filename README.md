@@ -83,32 +83,32 @@ Run
 ```bash
 uvicorn main:app
 ```
-Now, you can access the REST API. At http://127.0.0.1:8000/docs is the detailed documentation on how to use it, but you can also use the test scripts:
+Now, you can access the REST API. At http://127.0.0.1:8000/docs is the detailed documentation on how to use it, but you can also use these scripts:
 
-## Test the REST API
+## Use the REST API
 Two scripts are provided which show how to use the REST API programmatically:
 
 ### Request a summary for a (long) text
 ```bash
-python ./tests/request_summary.py
+python ./scripts/request_summary.py
 ```
 
 This returns a `document_id` and starts the summarization of the (long) text (defined within the script) in a background task.
 
 ### Get the summary
 ```bash
-python ./tests/get_summary.py 1
+python ./scripts/get_summary.py 1
 ```
 
 Replace `1` in this example with the actual `document_id` you got in the previous step.
 
 ```bash
 # output if the summary is still being created:
-python ./tests/get_summary.py 1
+python ./scripts/get_summary.py 1
 {'document_id': 1, 'summary': None}
 
 # output once the summarization is done:
-python ./tests/get_summary.py 1
+python ./scripts/get_summary.py 1
 {'document_id': 1,
  'summary': 'Tree squirrel\n'
             '\n'

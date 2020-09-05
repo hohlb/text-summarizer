@@ -13,9 +13,7 @@ headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
 }
 
-data = {
-  #'text': 'This is a long text'
-    
+data = {    
   # using the Wikipedia article about tree squirrels as an example for a long text
   'text': '''Tree squirrel
 
