@@ -19,7 +19,7 @@ async def create_summary(background_tasks: BackgroundTasks, text: str = Form(...
     """Summarize the given text and return the ID under which the summary will be stored."""
     document_id = create_summary_id()
 
-    # summarize the long text in a background task since this takes some time to finish
+    # summarize the long text using a background task since this takes some time to finish
     background_tasks.add_task(summarize_text, text, document_id)
 
     return {"document_id": document_id}

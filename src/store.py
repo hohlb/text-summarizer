@@ -2,7 +2,7 @@ from sqlite3 import connect, Cursor
 from typing import Union
 
 
-def create_summary_id() -> Union[int, None]:
+def create_summary_id() -> int:
     """Create a new database entry in which the summary will be stored and return the row ID."""
     cursor = get_database_cursor()
     cursor.execute("INSERT INTO summaries(summary) values (NULL)")
@@ -25,7 +25,7 @@ def save_summary(summary: str, document_id: int) -> None:
 
 
 def get_summary(document_id: int) -> Union[str, None]:
-    """Get the summary from the database via the given ID."""
+    """Get the summary from the database for the given ID."""
     cursor = get_database_cursor()
 
     parameters = (document_id,)

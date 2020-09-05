@@ -35,20 +35,13 @@ Installation
     # we install ipykernel to use this environment from JupyterLab
     #
     # we install scrapy via pip to avoid DLL errors for the etree dependency (no need for this under linux)
-    #conda install python=3.8 transformers fastapi ipykernel
-    #conda install pytorch cpuonly -c pytorch
-    #pip install transformers fastapi torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-    
-    #conda install python=3.8 ipykernel
-    #pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-    #pip install bert-extractive-summarizer fastapi
-    # see https://pytorch.org/ to generate the correct "pip install" command
     
     
-    conda install python=3.8 ipykernel -y
-    pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-    pip install bert-extractive-summarizer transformers==2.2.2 fastapi uvicorn python-multipart
-    # see https://pytorch.org/ to generate the correct "pip install" command
+    conda install python=3.8
+    
+    # go to https://pytorch.org/ (scroll a bit) to generate the correct "pip install" command for your platform
+    python -m pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+    python -m pip install -r requirements.txt
 
 
     
