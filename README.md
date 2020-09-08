@@ -72,11 +72,11 @@ python -c "import torch; import transformers; import summarizer; import fastapi;
 
 If you see no (error) messages, the installation went well.
 
-### Rebuild the database (optional)
-You can delete the existing SQLite database `summaries.db` at any time and rebuild it using:
+### Build the database
 ```bash
 python ./scripts/create_database.py
 ```
+This SQLite database holds the summaries and their `document_id`. You can delete the database at any time and rebuild it using this script.
 
 ## Serve the REST API
 Run
