@@ -1,6 +1,6 @@
 from fastapi import BackgroundTasks, FastAPI, Form
 from src.store import create_summary_id, get_summary
-from src.summarize import summarize_text
+from src.summarize import summarize_text_and_save_to_database
 
 app = FastAPI()
 
@@ -20,6 +20,6 @@ async def create_summary(background_tasks: BackgroundTasks, text: str = Form(...
     document_id = create_summary_id()
 
     # summarize the long text using a background task since this takes some time to finish
-    background_tasks.add_task(summarize_text, text, document_id)
+    background_tasks.add_task(summarize_text_and_save_to_database, text, document_id)
 
     return {"document_id": document_id}
