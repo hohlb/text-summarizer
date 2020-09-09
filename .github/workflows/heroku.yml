@@ -13,8 +13,10 @@ jobs:
 
       - name: Login to Heroku container registry
         env:
-          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-        run: echo "$HEROKU_API_TOKEN" | docker login registry.heroku.com --username _ --password-stdin
+          INPUT_USERNAME: _
+          INPUT_PASSWORD: ${{ secrets.HEROKU_API_TOKEN }}
+          INPUT_REGISTRY: registry.heroku.com
+        run: docker run docker/github-actions login
 
       - name: Deploy to Heroku container registry
         env:
