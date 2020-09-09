@@ -11,11 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Deploy to Heroku Container registry
+      - name: Login to Heroku container registry
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        run: echo "$HEROKU_API_TOKEN" | docker login registry.heroku.com -u --username=_ --password-stdin
+
+      - name: Deploy to Heroku container registry
+        env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
         run: |
-          docker login --username=_ --password=$HEROKU_API_TOKEN registry.heroku.com
-          heroku container:push -a $HEROKU_APP_NAME web
-          heroku container:release -a $HEROKU_APP_NAME web
+          heroku container:push web -a $HEROKU_APP_NAME
+          heroku container:release web -a $HEROKU_APP_NAME
+
