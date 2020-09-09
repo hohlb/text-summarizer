@@ -1,13 +1,10 @@
-FROM python:3.8.5-slim AS install
-WORKDIR /install
+FROM python:3.8.5-slim
+
+WORKDIR /app
 COPY requirements.txt .
-# the --user flag creates a ".local" directory
-RUN python -m pip install --user torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-RUN python -m pip install --user -r requirements.txt
+RUN python -m pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+RUN python -m pip install -r requirements.txt
 COPY . .
 
-FROM python:3.8.5-slim AS runtime
-WORKDIR /app
-COPY --from=install /install .
 # using $PORT for deploy to heroku:
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", $PORT]
