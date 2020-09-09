@@ -8,10 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-#    env:
-#      HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-#      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-
     steps:
       - uses: actions/checkout@v2
 
@@ -20,6 +16,6 @@ jobs:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
         run: |
-          heroku container:login
+          docker login --username=_ --password=$HEROKU_API_TOKEN registry.heroku.com
           heroku container:push -a $HEROKU_APP_NAME web
           heroku container:release -a $HEROKU_APP_NAME web
