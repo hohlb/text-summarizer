@@ -8,7 +8,6 @@ COPY . .
 
 FROM python:3.8.5-slim AS runtime
 WORKDIR /app
-COPY --from=install /install/.local ./.local
-# ENTRYPOINT ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", $PORT]
-# heroku uses the following
+COPY --from=install /install .
+# using $PORT for deploy to heroku:
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", $PORT]
