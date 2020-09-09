@@ -18,6 +18,11 @@ jobs:
           registry: registry.heroku.com
           username: _
           password: ${{ secrets.HEROKU_API_KEY }}
+          
+      - name: Login to Heroku Container registry using heroku command
+        env: 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
 
       - name: Deploy to Heroku container registry
         env:
