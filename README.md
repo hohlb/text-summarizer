@@ -26,7 +26,7 @@ docker build -t hohlb/text-summarizer .
 docker run --rm -p 8000:8000 hohlb/text-summarizer
 
 # (optional) use the Python environment, e.g. for executing scripts
-# (it makes sense to start this command in another shell and leave the REST API running via the above command)
+# (recommendation: start this command in another shell and leave the REST API running via the above command)
 #
 # --it: opens an interactive terminal
 docker run --rm -it hohlb/text-summarizer bash
