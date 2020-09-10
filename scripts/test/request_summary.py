@@ -15,6 +15,11 @@ headers = {
 
 data = {    
   # using the Wikipedia article about tree squirrels as an example for a long text
+  #
+  # This text was taken from https://en.wikipedia.org/wiki/Tree_squirrel
+  # some parts (e.g. the image captions) were left out.
+  # This slightly shortened Wikipedia text is thus publicly available the Creative Commons Attribution-ShareAlike License, https://creativecommons.org/licenses/by-sa/3.0/
+  # as explained by https://en.wikipedia.org/wiki/Wikipedia:Reusing_Wikipedia_content#Re-use_of_text_under_Creative_Commons_Attribution-ShareAlike
   'text': '''Tree squirrel
 
 Tree squirrels are the members of the squirrel family (Sciuridae) commonly just referred to as "squirrels". They include over a hundred arboreal species native to all continents except Antarctica and Oceania. They do not form a single natural, or monophyletic group; they are related to others in the squirrel family, including ground squirrels, flying squirrels, marmots, and chipmunks. The defining characteristic used to determine which species of Sciuridae are tree squirrels is dependent on their habitat rather than their physiology. Tree squirrels live mostly among trees, as opposed to those that live in burrows in the ground or among rocks. An exception is the flying squirrel that also makes its home in trees, but has a physiological distinction separating it from its tree squirrel cousins: special flaps of skin called patagia, acting as glider wings, which allows gliding flight.
