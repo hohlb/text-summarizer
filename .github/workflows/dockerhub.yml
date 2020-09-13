@@ -32,7 +32,7 @@ jobs:
           DOCKERHUB_REPOSITORY: ${{ github.repository }}
         with:
           push: true
-          tags: ${{ DOCKERHUB_REPOSITORY }}:latest
+          tags: $DOCKERHUB_REPOSITORY:latest
       -
         name: Docker image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
