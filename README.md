@@ -13,14 +13,9 @@ Built using [FastAPI](https://fastapi.tiangolo.com/) and [BERT Extractive Summar
 
 ### Using Docker:
 ```bash
-# change the working directory to our codebase
-cd text-summarizer
-
-# build the docker image and name it
-docker build -t hohlb/text-summarizer .
-
 # run the REST API
 #
+# pulls the docker image from Docker Hub
 # -p: binds our docker container's port of the REST API to the same port (8000) on the host machine
 # --rm: automatically clean up the container and remove the file system when the container exits
 docker run --rm -p 8000:8000 hohlb/text-summarizer
