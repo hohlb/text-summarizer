@@ -1,11 +1,21 @@
-import sqlite3
+from sqlite3 import Cursor
 
-conn = sqlite3.connect("summaries.db")
-cursor = conn.cursor()
+import sys; sys.path.append("..")
+from src.store import get_database_cursor
 
-cursor.execute("""CREATE TABLE summaries
-                      (id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                      summary TEXT)""")
 
-conn.commit()
-conn.close()
+def create_table(cursor: Cursor) -> None:
+    cursor.execute("""CREATE TABLE summaries
+                          (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                          summary TEXT)""")
+    cursor.connection.commit()
+
+
+def create_database() -> None:
+    cursor = get_database_cursor()
+    create_table(cursor)
+    cursor.connection.close()
+
+
+if __name__ == '__main__':
+    create_database()

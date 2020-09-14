@@ -83,7 +83,7 @@ docker run --rm -it hohlb/text-summarizer bash
 
   #### Build the database
   ```bash
-  python ./scripts/create_database.py
+  python -m scripts.create_database
   ```
   This SQLite database holds the summaries and their `document_id`. You can delete the database at any time and rebuild it using this script.
 

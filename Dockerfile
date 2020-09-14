@@ -10,7 +10,7 @@ RUN python -m pip install -r requirements.txt
 COPY . .
 
 # create the database that holds the summarized texts
-RUN python scripts/create_database.py
+RUN python -m scripts.create_database
 
 # force the download of the language model (which will be downloaded on first use) to cache it
 #

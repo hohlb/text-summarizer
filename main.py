@@ -1,6 +1,8 @@
 from fastapi import BackgroundTasks, FastAPI, Form
+
 from src.store import create_summary_id, get_summary
 from src.summarize import summarize_text_and_save_to_database
+
 
 app = FastAPI()
 

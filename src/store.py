@@ -1,6 +1,9 @@
 from sqlite3 import connect, Cursor
 from typing import Union
 
+import sys; sys.path.append("..")
+from config import settings
+
 
 def create_summary_id() -> int:
     """Create a new database entry in which the summary will be stored and return the row ID."""
@@ -38,7 +41,8 @@ def get_summary(document_id: int) -> Union[str, None]:
 
 
 def get_database_cursor() -> Cursor:
-    conn = connect("summaries.db")
+    conn = connect(settings.database_file,
+                   check_same_thread=False) # if you are using my concurrent connections, consider swapping SQLite with an appropriate database
 
     return conn.cursor()
 
