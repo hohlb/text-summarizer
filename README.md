@@ -27,11 +27,11 @@ docker run --rm -p 8000:8000 hohlb/text-summarizer
 docker run --rm -it hohlb/text-summarizer bash
 ```
 
-### Install Python packages using pip or conda (alternatively):
+### Setup using pip or conda (alternatively):
 <details>
   <summary>Click to expand</summary>
 
-  #### Install packages using pip:
+  #### Create a virtual environment for pip:
   Python 3.6 or higher is supported.
 
   ```bash
@@ -48,18 +48,9 @@ docker run --rm -it hohlb/text-summarizer bash
 
   # update the virtual environment's package manager
   python3 -m pip install --upgrade pip
-
-  # install the necessary Python packages
-  #
-  # first, we will install pytorch:
-  # the following pytorch installation command worked for my platform, but it is highly recommended to
-  # go to https://pytorch.org/ (you need to scroll a bit on that web page) to generate the correct "pip install" command for your platform
-  python3 -m pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-  # now, we can install the remaining packages:
-  python3 -m pip install -r requirements.txt
   ```
 
-  #### Install packages using conda (alternatively):
+  #### Create a virtual environment using conda (alternatively):
   ```bash
   # change the working directory to our codebase
   cd text-summarizer
@@ -76,23 +67,18 @@ docker run --rm -it hohlb/text-summarizer bash
 
   # use Python 3.8
   conda install python=3.8
-
-  # install the necessary Python packages
-  #
-  # first, we will install pytorch:
-  # the following pytorch installation command worked for my platform, but it is highly recommended to
-  # go to https://pytorch.org/ (you need to scroll a bit on that web page) to generate the correct "pip install" command for your platform
-  # (I opted to use the pip packages instead of the conda packages (see the following lines) because it worked better for me)
-  python -m pip install torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-  # now, we can install the remaining packages:
-  python -m pip install -r requirements.txt
   ```
 
-  #### Check if the packages were installated correctly
+  #### Install the necessary Python packages:
+  ```bash
+  python -m pip install -r requirements.txt
+  ```
+  This also works if you are using a `conda` environment.
+    
+  Check if the packages were installated correctly
   ```bash
   python -c "import torch; import transformers; import summarizer; import fastapi; import uvicorn; import multipart; import requests"
   ```
-
   If you see no (error) messages, the installation went well.
 
   #### Build the database
@@ -100,28 +86,28 @@ docker run --rm -it hohlb/text-summarizer bash
   python ./scripts/create_database.py
   ```
   This SQLite database holds the summaries and their `document_id`. You can delete the database at any time and rebuild it using this script.
+
+  #### Serve the REST API
+  If you used `pip` or `conda`, run
+  ```bash
+  uvicorn main:app
+  ```
 </details>
 
-## Serve the REST API
-If you used `pip` or `conda`, run
-```bash
-uvicorn main:app
-```
-(this will be done automatically in the Docker image).
-
+## Use the REST API
 Now, you can access the REST API. At http://localhost:8000/docs is the detailed documentation on how to use it, but you can also use these scripts:
 
-## Use the REST API
+### Use REST API programmatically
 Two scripts are provided which show how to use the REST API programmatically:
 
-### Request a summary for a (long) text
+#### Request a summary for a (long) text
 ```bash
 python ./scripts/test/request_summary.py
 ```
 
 This returns a `document_id` and starts the summarization of the (long) text (defined within the script) in a background task.
 
-### Get the summary
+#### Get the summary
 ```bash
 python ./scripts/test/get_summary.py 1
 ```

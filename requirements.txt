@@ -1,5 +1,7 @@
-# pytorch needs to be installed as well,
-# go to https://pytorch.org/ (scroll a bit) to generate the correct "pip install" command for your platform
+# go to https://pytorch.org/ (you need to scroll a bit on that web page) to generate the exact "pip install" command for your platform
+-f https://download.pytorch.org/whl/torch_stable.html
+torch==1.6.0+cpu
+torchvision==0.7.0+cpu
 
 bert-extractive-summarizer~=0.5.0
 fastapi~=0.61.1
