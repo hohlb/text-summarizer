@@ -1,0 +1,5 @@
+-r requirements.txt
+
+# packages used for development:
+flake8~=3.8.3
+pytest~=6.0.2
