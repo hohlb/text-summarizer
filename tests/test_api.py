@@ -52,7 +52,7 @@ def test_create_summary():
 
 
     # get summary
-    response = client.get(f"/summaries/{document_id}")
+    response = client.get("/summaries/1")
     assert response.status_code == 200, response.text
 
     data = response.json()
