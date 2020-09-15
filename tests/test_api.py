@@ -9,6 +9,7 @@ from src.store import get_database_cursor
 
 
 settings.database_file = ":memory:"
+settings.database_check_same_thread = False
 client = TestClient(app)
 
 example_text = (

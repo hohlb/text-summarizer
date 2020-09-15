@@ -42,7 +42,7 @@ def get_summary(document_id: int) -> Union[str, None]:
 
 def get_database_cursor() -> Cursor:
     conn = connect(settings.database_file,
-                   check_same_thread=False) # if you are using my concurrent connections, consider swapping SQLite with an appropriate database
+                   check_same_thread=settings.database_check_same_thread)
 
     return conn.cursor()
 
