@@ -11,25 +11,6 @@ from src.store import get_database_cursor
 settings.database_file = ":memory:"
 client = TestClient(app)
 
-
-@pytest.fixture
-def session():
-    db_session = get_database_cursor()
-
-    yield db_session
-
-    db_session.connection.close()
-
-
-@pytest.fixture
-def setup_db(session, monkeypatch):
-    # don't close (and thus remove) the in-memory test database
-    monkeypatch.setattr("src.store.get_database_cursor", lambda: session.connection.cursor())
-    monkeypatch.setattr("src.store.commit_and_close", lambda session: session.connection.commit())
-
-    create_table(session)
-
-
 example_text = (
     'Squirrels are often the cause of power outages. They can readily climb a power pole and crawl or run along a power cable. '
     'The animals will climb onto power transformers or capacitors looking for food, or a place to cache acorns. If they touch a '
@@ -40,7 +21,24 @@ example_text = (
     'are sometimes used to discourage access to these facilities.'
 )
 
-@pytest.mark.usefixtures("setup_db")
+
+@pytest.fixture
+def database_session():
+    session = get_database_cursor()
+    yield session
+    session.connection.close()
+
+
+@pytest.fixture
+def setup_database(database_session, monkeypatch):
+    # don't close (and thus remove) the in-memory test database
+    monkeypatch.setattr("src.store.get_database_cursor", lambda: database_session.connection.cursor())
+    monkeypatch.setattr("src.store.commit_and_close", lambda session: session.connection.commit())
+
+    create_table(database_session)
+
+
+@pytest.mark.usefixtures("setup_database")
 def test_create_summary():
     # create summary
     response = client.post("/summaries/",
