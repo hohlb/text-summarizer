@@ -13,15 +13,15 @@ Built using [FastAPI](https://fastapi.tiangolo.com/) and [BERT Extractive Summar
 
 ### Using Docker:
 ```bash
-# run the REST API
+# serve the REST APIs
 #
 # pulls the docker image from Docker Hub
-# -p: binds our docker container's port of the REST API to the same port (8000) on the host machine
+# -p: binds our docker container's port of the REST APIs to the same port (8000) on the host machine
 # --rm: automatically clean up the container and remove the file system when the container exits
 docker run --rm -p 8000:8000 hohlb/text-summarizer
 
 # (optional) use the Python environment, e.g. for executing scripts
-# (recommendation: start this command in another shell and leave the REST API running via the above command)
+# (recommendation: start this command in another shell and leave the REST APIs running via the above command)
 #
 # --it: opens an interactive terminal
 docker run --rm -it hohlb/text-summarizer bash
@@ -87,18 +87,17 @@ docker run --rm -it hohlb/text-summarizer bash
   ```
   This SQLite database holds the summaries and their `document_id`. You can delete the database at any time and rebuild it using this script.
 
-  #### Serve the REST API
-  If you used `pip` or `conda`, run
+  #### Serve the REST APIs
   ```bash
   uvicorn main:app
   ```
 </details>
 
-## Use the REST API
-Now, you can access the REST API. At http://localhost:8000/docs is the detailed documentation on how to use it, but you can also use these scripts:
+## Use the REST APIs
+Now, you can access the REST APIs. At http://localhost:8000/docs and http://localhost:8000/redoc are the detailed documentations on how to use the REST APIs, but you can also use these scripts:
 
-### Use REST API programmatically
-Two scripts are provided which show how to use the REST API programmatically:
+### Use the REST APIs programmatically
+Two scripts are provided which show how to use the REST APIs programmatically:
 
 #### Request a summary for a (long) text
 ```bash
