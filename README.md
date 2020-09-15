@@ -9,23 +9,19 @@ Having two separate APIs is especially useful when the summarization runs a long
 
 Built using [FastAPI](https://fastapi.tiangolo.com/) and [BERT Extractive Summarizer](https://github.com/dmmiller612/bert-extractive-summarizer).
 
-## Installation
+## Setup
 
 ### Using Docker:
 ```bash
 # serve the REST APIs
-#
-# pulls the docker image from Docker Hub
-# -p: binds our docker container's port of the REST APIs to the same port (8000) on the host machine
-# --rm: automatically clean up the container and remove the file system when the container exits
 docker run --rm -p 8000:8000 hohlb/text-summarizer
 
 # (optional) use the Python environment, e.g. for executing scripts
-# (recommendation: start this command in another shell and leave the REST APIs running via the above command)
-#
-# --it: opens an interactive terminal
+# (start this command in another shell and leave the REST APIs running via the above command)
 docker run --rm -it hohlb/text-summarizer bash
 ```
+
+The Docker image gets pulled from [Docker Hub](https://hub.docker.com/r/hohlb/text-summarizer) automatically. (The image gets put on Docker Hub via [my GitHub Action workflow](https://github.com/hohlb/text-summarizer/blob/master/.github/workflows/dockerhub.yml).)
 
 ### Setup using pip or conda (alternatively):
 <details>
