@@ -1,11 +1,11 @@
 # go to https://pytorch.org/ (you need to scroll a bit on that web page) to generate the exact "pip install" command for your platform
 -f https://download.pytorch.org/whl/torch_stable.html
-torch
-torchvision
+torch==1.6.0+cpu
+torchvision==0.7.0+cpu
 
-bert-extractive-summarizer
-fastapi
-python-multipart
-requests
-transformers
-uvicorn
+bert-extractive-summarizer~=0.5.0
+fastapi~=0.61.1
+python-multipart~=0.0.5
+requests~=2.24.0
+transformers==2.2.2
+uvicorn~=0.11.8
